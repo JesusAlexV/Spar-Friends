@@ -1,0 +1,478 @@
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  z-index: 999;
+}
+
+h2, h3 {
+  text-transform: uppercase;
+}
+
+header .logo {
+  color: #fff;
+  cursor: pointer;
+}
+
+.desktop {
+  display: none;
+}
+
+.toggle {
+  position: absolute;
+  top: -0.5em;
+  right: 1em;
+  width: 60px;
+  height: 60px;
+  background: url(https://i.ibb.co/HrfVRcx/menu.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.3s ease-in 0.35s;
+}
+
+.toggle.active {
+  background: url(https://i.ibb.co/rt3HybH/close.png);
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: center;
+  cursor: pointer;
+}
+
+.showcase {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.showcase.active {
+/*   right: 100%; */
+}
+
+.showcase video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #78c3fb;
+  mix-blend-mode: overlay;
+}
+
+.text {
+  position: relative;
+  z-index: 10;
+  padding-left:25px;
+}
+
+.text h2 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1em;
+}
+
+.text h3 {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1em;
+}
+
+.text p {
+  font-size: 1.1em;
+  color: #fff;
+  margin: 1.25em 0;
+  font-weight: 400;
+}
+
+.text a {
+  display: inline-block;
+  font-size: 1rem;
+  background: #fff;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 10px;
+  color: #111;
+  letter-spacing: 2px;
+  transition: letter-spacing 0.2s ease-in;
+}
+
+.text a:hover {
+  letter-spacing: 6px;
+}
+
+.social {
+  position: absolute;
+  z-index: 10;
+  bottom: 1.25em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social li a {
+  display: inline-block;
+  filter: invert(1);
+  transform: scale(0.5);
+  transition: transform 0.3s ease-in;
+}
+
+.social li a:hover {
+  transform: scale(0.5) translateY(-0.94em);
+}
+
+.social > * + * {
+  margin-left: 1.25em;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.menu ul li a {
+  font-size: 1.5rem;
+  color: #111;
+}
+
+.menu ul li a:hover {
+  color: #03a9f4;
+}
+
+.menu ul > * + * {
+  margin-top: 2.5em;
+}
+
+.menu .toggle.active {
+  filter: invert(1);
+}
+
+.menu .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 0.65rem;
+  width: 100%;
+  color: rgb(119, 118, 118);
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  header {
+    padding: 3em;
+  }
+  .showcase {
+    padding: 3em;
+  }
+
+  .text p {
+    max-width: 650px;
+    font-size: 1.3rem;
+  }
+  .text h2 {
+    font-size: 5rem;
+  }
+
+  .text h3 {
+    font-size: 4rem;
+  }
+
+  .text a {
+    font-size: 1.5rem;
+  }
+
+  .toggle {
+    top: 2.15em;
+  }
+
+  .menu ul li a {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text p {
+    max-width: 700px;
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .desktop ul {
+    display: flex;
+  }
+
+  .nav__link.nav__link--active {
+    color: #fff;
+  }
+
+  .nav__link {
+    color: #afaeae;
+    font-size: 1.5rem;
+  }
+
+  .desktop ul > * + * {
+    margin-left: 1.5em;
+  }
+
+  .toggle {
+    display: none;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .text h2 {
+    font-size: 1.3rem;
+  }
+
+  .text h3 {
+    font-size: 1rem;
+  }
+
+  .text p {
+    font-size: 0.75rem;
+    max-width: 500px;
+  }
+
+  .menu ul li a {
+    font-size: 0.85rem;
+  }
+
+  .menu ul > * + * {
+    margin-top: 1.5em;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  .text h2 {
+    font-size: 1rem;
+  }
+  .text h3 {
+    font-size: 1.5rem;
+  }
+
+  .text p {
+    font-size: 0.85rem;
+    max-width: 600px;
+  }
+
+  .menu ul li a {
+    font-size: 1rem;
+  }
+
+  .menu ul > * + * {
+    margin-top: 1.5em;
+  }
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .text h2 {
+    font-size: 1rem;
+  }
+  .text h3 {
+    font-size: 1.5rem;
+  }
+
+  .text p {
+    font-size: 0.85rem;
+    max-width: 600px;
+  }
+  .menu ul li a {
+    font-size: 1rem;
+  }
+
+  .menu ul > * + * {
+    margin-top: 1.5em;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .text h2 {
+    font-size: 1rem;
+  }
+  .text h3 {
+    font-size: 1.5rem;
+  }
+
+  .text p {
+    font-size: 0.85rem;
+    max-width: 600px;
+  }
+
+  .text a {
+    font-size: 0.85rem;
+  }
+
+  .menu ul li a {
+    font-size: 1rem;
+  }
+
+  .menu ul > * + * {
+    margin-top: 1.5em;
+  }
+}
+
+@media only screen and (min-device-width: 411px) and (max-device-width: 823px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .text h2 {
+    font-size: 1rem;
+  }
+  .text h3 {
+    font-size: 1.5rem;
+  }
+
+  .text p {
+    font-size: 0.85rem;
+    max-width: 600px;
+  }
+
+  .text a {
+    font-size: 0.85rem;
+  }
+
+  .menu ul li a {
+    font-size: 1rem;
+  }
+
+  .menu ul > * + * {
+    margin-top: 1.5em;
+  }
+}
+
+</style>
+
+<section class="showcase">
+    <header>
+      <h2 class="logo">Spar_Friends</h2>
+      <nav class="desktop">
+        <ul>
+          <li>
+            <a href="#" class="nav__link">Home</a>
+          </li>
+          <li>
+            <a href="/begin" class="nav__link nav__link--active">
+                Begin
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <video
+      src="/media/Sparring Montage.mp4"
+      muted
+      loop
+      autoplay
+    ></video>
+
+    <div class="overlay"></div>
+
+    <div class="text">
+      <h2>Connecting</h2>
+      <h3>with Martial Arts</h3>
+      <p>
+        Find martial artists near you who are looking to spar.
+        <br />Make friends and train!
+      </p>
+      <a href="/begin">Begin</a>
+    </div>
+
+    <ul class="social">
+      <li>
+        <a href="#"><img src="https://i.ibb.co/x7P24fL/github.png" /></a>
+      </li>
+      <li>
+        <a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png" /></a>
+      </li>
+      <li>
+        <a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png" /></a>
+      </li>
+    </ul>
+  </section>
+
+<script>
+    const menuToggle = document.querySelector('.toggle')
+const showcase = document.querySelector('.showcase')
+const menus = document.querySelectorAll('.toggle__list')
+
+
+const toggleMenu = () => {
+  menuToggle.classList.toggle('active')
+  showcase.classList.toggle('active')
+  menus.forEach(menu => menu.classList.toggle('active'))
+}
+
+
+menuToggle.addEventListener('click', toggleMenu)
+menus.forEach(menu => menu.addEventListener('click', toggleMenu))
+
+</script>
